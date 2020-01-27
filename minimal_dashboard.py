@@ -29,7 +29,20 @@ from IPython.display import display, display_html, Markdown
 
 encoder = NeuroQueryModel.from_data_dir(fetch_neuroquery_model())
 
-query = widgets.Text(value="brainstem")
+# + language="javascript"
+# IPython.notebook.kernel.execute("URL = '" + window.location + "'");
+# -
+
+import urllib
+qp = urllib.parse.urlparse(URL).query
+query_value = 'pain'
+if(qp):
+    param_dict = urllib.parse.parse_qs(qp)
+    print(param_dict)
+    query_value = param_dict.get('query', [query_value])[0]
+print(query_value)
+
+query = widgets.Text(value=query_value)
 button = widgets.Button(description="Run query")
 display(widgets.HBox([query, button]))
 output = widgets.Output()
