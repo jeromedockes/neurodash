@@ -47,7 +47,8 @@ def run_and_display_query(_):
     bmap_out = widgets.Output(layout=widgets.Layout(width='auto', height='200px', grid_area='brainmap'))
     terms_out = widgets.Output(layout=widgets.Layout(width='auto', height='350px', grid_area='terms'))
     docs_out = widgets.Output(layout=widgets.Layout(width='auto', grid_area='docs'))
-    
+ 
+    bmap_out.append_display_data(Markdown("## Brain Map"))
     bmap_out.append_display_data(HTML(view_img(result["z_map"], threshold=3.1).get_iframe()))
     terms_out.append_display_data(Markdown("## Similar Words"))
     sw = result["similar_words"].head(12)
