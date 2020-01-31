@@ -55,3 +55,9 @@ def run_and_display_query(_):
 button.on_click(run_and_display_query)
 
 run_and_display_query(None)
+
+# Running on a binder? Provide a restart link if unresponsive
+import os
+persistent_binder_url = os.getenv('PERSISTENT_BINDER_URL')
+if persistent_binder_url:
+    display(Markdown(f"Unresponsive website ? Restart by visiting [this link]({persistent_binder_url})"))
